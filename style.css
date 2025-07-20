@@ -1,0 +1,253 @@
+:root {
+    --background-color: #f8f9fa;
+    --container-bg: #ffffff;
+    --text-color: #212529;
+    --heading-color: #343a40;
+    /* Dark Theme (Default) */
+    --editor-bg-dark: #282c34;
+    --editor-text-dark: #abb2bf;
+    --editor-border-dark: #4b5263;
+    --editor-shadow-dark: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    --editor-line-num-dark: #636d83;
+    /* Light Theme */
+    --editor-bg-light: #ffffff;
+    --editor-text-light: #343a40;
+    --editor-border-light: #ced4da;
+    --editor-shadow-light: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    --editor-line-num-light: #adb5bd;
+    /* Notepad Theme */
+    --editor-bg-notepad: #ffffff;
+    --editor-text-notepad: #000000;
+    --editor-border-notepad: #a0a0a0;
+    --editor-shadow-notepad: none;
+    --editor-line-num-notepad: #999999;
+    /* Sublime Text Theme (Monokai-like) */
+    --editor-bg-sublime: #272822;
+    --editor-text-sublime: #f8f8f2;
+    --editor-border-sublime: #414339;
+    --editor-shadow-sublime: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+    --editor-line-num-sublime: #8f908a;
+    /* VS Code Dark Theme */
+    --editor-bg-vscode-dark: #1e1e1e;
+    --editor-text-vscode-dark: #d4d4d4;
+    --editor-border-vscode-dark: #3c3c3c;
+    --editor-shadow-vscode-dark: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+    --editor-line-num-vscode-dark: #858585;
+
+    --primary-accent: #0d6efd;
+    --success-accent: #198754;
+    --warning-accent: #ffc107;
+    --secondary-accent: #6c757d;
+    --danger-accent: #dc3545;
+    --monospace-font: 'Roboto Mono', 'Courier New', Courier, monospace;
+    --border-radius: 0.375rem;
+}
+
+/* --- General Styles --- */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: sans-serif;
+    line-height: 1.6;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    max-width: 800px;
+    background-color: var(--container-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+h1#mainHeading {
+    color: var(--heading-color);
+    font-weight: 700;
+    transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+}
+
+/* --- Input Text Area --- */
+#inputSection {
+    transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+}
+#inputText {
+    font-family: var(--monospace-font);
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    min-height: 150px;
+    resize: vertical;
+}
+#inputText:focus {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Style for the file upload label (button) if needed, but Bootstrap classes handle most */
+label[for="fileInput"].btn {
+    /* Add custom styles here if Bootstrap defaults aren't enough */
+    /* e.g., margin-right: 5px; */
+    cursor: pointer; /* Ensure cursor indicates clickability */
+}
+
+
+/* --- Output Area --- */
+#outputSection label {
+     transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+}
+
+.code-editor-look {
+    font-family: var(--monospace-font);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    min-height: 200px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: auto;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+    /* Default theme (Dark) applied here */
+    background-color: var(--editor-bg-dark);
+    color: var(--editor-text-dark);
+    border: 1px solid var(--editor-border-dark);
+    box-shadow: var(--editor-shadow-dark);
+}
+
+/* Theme-specific overrides */
+.code-editor-look.theme-light {
+    background-color: var(--editor-bg-light);
+    color: var(--editor-text-light);
+    border-color: var(--editor-border-light);
+    box-shadow: var(--editor-shadow-light);
+}
+.code-editor-look.theme-notepad {
+    background-color: var(--editor-bg-notepad);
+    color: var(--editor-text-notepad);
+    border-color: var(--editor-border-notepad);
+    box-shadow: var(--editor-shadow-notepad);
+    font-family: 'Courier New', Courier, monospace;
+}
+.code-editor-look.theme-sublime {
+    background-color: var(--editor-bg-sublime);
+    color: var(--editor-text-sublime);
+    border-color: var(--editor-border-sublime);
+    box-shadow: var(--editor-shadow-sublime);
+}
+.code-editor-look.theme-vscode-dark {
+    background-color: var(--editor-bg-vscode-dark);
+    color: var(--editor-text-vscode-dark);
+    border-color: var(--editor-border-vscode-dark);
+    box-shadow: var(--editor-shadow-vscode-dark);
+}
+
+
+/* --- Line Number Styles --- */
+.line-number {
+    display: inline-block;
+    color: var(--editor-line-num-dark); /* Default color */
+    padding-right: 1em;
+    text-align: right;
+    user-select: none;
+}
+/* Theme-specific line number colors */
+.code-editor-look.theme-light .line-number { color: var(--editor-line-num-light); }
+.code-editor-look.theme-notepad .line-number { color: var(--editor-line-num-notepad); }
+.code-editor-look.theme-sublime .line-number { color: var(--editor-line-num-sublime); }
+.code-editor-look.theme-vscode-dark .line-number { color: var(--editor-line-num-vscode-dark); }
+
+
+/* --- Blinking Cursor Styles --- */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+#typingCursor {
+    display: inline;
+    font-weight: bold;
+    color: currentColor;
+    animation: blink 1s step-end infinite;
+    margin-left: 1px;
+}
+
+
+/* --- Controls --- */
+#controlsSection {
+    transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+}
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+}
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.btn:active {
+    transform: translateY(0);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#speedControl, #themeSelector {
+    cursor: pointer;
+    border-radius: var(--border-radius);
+}
+
+/* Styles for Clear Buttons */
+#clearInputButton, #clearOutputButton {
+     padding: 0.15rem 0.4rem;
+     font-size: 0.8em;
+     line-height: 1.2;
+}
+#clearInputButton i, #clearOutputButton i {
+    vertical-align: middle;
+}
+
+
+/* --- Fullscreen Mode Styles --- */
+body.fullscreen-active {
+     background-color: var(--editor-bg-dark); /* Default, JS might override */
+    overflow: hidden;
+}
+body.fullscreen-active #mainHeading,
+body.fullscreen-active #inputSection,
+body.fullscreen-active #outputSection label,
+body.fullscreen-active #controlsSection {
+    opacity: 0; visibility: hidden; height: 0; margin: 0; padding: 0; overflow: hidden; pointer-events: none;
+}
+body.fullscreen-active #outputArea {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1000;
+    border-radius: 0; border: none; min-height: 100vh; font-size: 1.1rem; padding: 2rem;
+    box-shadow: none; opacity: 1; visibility: visible;
+}
+body.fullscreen-active #fullscreenButton {
+    position: fixed; top: 15px; right: 15px; z-index: 1001; opacity: 1; visibility: visible;
+    height: auto; pointer-events: auto; transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+body.fullscreen-active #fullscreenButton:hover {
+     opacity: 1; transform: none; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .container { padding: 1.5rem; margin-top: 1rem; margin-bottom: 1rem; }
+    h1 { font-size: 1.75rem; }
+    #controlsSection:not(body.fullscreen-active *) .d-flex.flex-wrap.align-items-center.gap-3 { flex-direction: column; align-items: stretch !important; }
+    #controlsSection:not(body.fullscreen-active *) .ms-auto { margin-left: 0 !important; width: 100%; flex-direction: column; }
+    #controlsSection:not(body.fullscreen-active *) #speedControl,
+    #controlsSection:not(body.fullscreen-active *) #themeSelector { width: 100% !important; }
+    #controlsSection:not(body.fullscreen-active *) .d-flex.align-items-center.gap-2 { flex-direction: row; justify-content: space-between; width: 100%; }
+    body.fullscreen-active #fullscreenButton { top: 10px; right: 10px; padding: 0.4rem 0.8rem; }
+    body.fullscreen-active #outputArea { padding: 1rem; font-size: 1rem; }
+    #clearInputButton, #clearOutputButton {
+        /* padding: 0.2rem 0.5rem; */
+    }
+    /* Adjust input area header on small screens */
+    #inputSection .d-flex.justify-content-between {
+        /* Maybe stack upload/clear buttons below label? */
+        /* flex-direction: column; */
+        /* align-items: flex-start !important; */
+    }
+}
