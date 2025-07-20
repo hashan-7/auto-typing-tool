@@ -49,7 +49,7 @@ This project is built with fundamental web technologies, requiring no complex se
 ## 📂 Project Structure
 
 
-/
+
 ├── index.html      # The main HTML file
 ├── style.css       # All the custom styles and themes
 └── script.js       # The core application logic
